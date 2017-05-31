@@ -57,12 +57,12 @@ La sintaxis es como sigue:
 export interface IPet {
     id: string;
     name: string;
-    age: number;
     size: string;
     birthDate: Date;
     weight: number;
     breedName: string;
     imageUrl: string;
+    calculateAge() : number;
 }
 
 ```
