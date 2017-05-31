@@ -64,5 +64,12 @@ export interface IPet {
     imageUrl: string;
     calculateAge() : number;
 }
+```
 
+Pudiendo entonces tener:
+
+```typescript
+pageTitle: string;
+showImage: boolean;
+pets: IPet[]; // Esto no tiene tipo!
 ```
