@@ -49,3 +49,20 @@ Donde la property ```pets``` es un array de cualquier tipo. Para asegurarnos de 
 Como ya sabemos, una **interfaz** es una **especificación/contrato de un conjunto de métodos y properties**. Las clases que cumplan con dicha especificación o contrato se dicen que **implementan** tal interfaz.
 
 ES5 y ES2015 no soportan interfaces, pero sí TypeScript, en consecuencia no existirá nada de esto en el JavaScript resultado de la transpilación.
+
+La sintaxis es como sigue:
+
+```typescript
+
+export interface IPet {
+    id: string;
+    name: string;
+    age: number;
+    size: string;
+    birthDate: Date;
+    weight: number;
+    breedName: string;
+    imageUrl: string;
+}
+
+```
