@@ -35,3 +35,17 @@ Como los componentes **son el building block esencial de toda app en Angular**, 
 - También veremos como crear Custom Pipes para transformar datos antes de mostrarlo en la View. Haremos el ejemplo del filtrado en el listado de mascotas.
 
 ## Interfaces en Angular
+
+Como ya sabemos, TypeScript tiene un tipado fuerte (Strong Typing), sin embargo muchas veces podemos encontrarnos con algo así:
+
+```typescript
+pageTitle: string;
+showImage: boolean;
+pets: any[]; // Esto no tiene tipo!
+```
+
+Donde la property ```pets``` es un array de cualquier tipo. Para asegurarnos de que dichos elementos cumplan con una cierta interfaz particular, podemos definir interfaces.
+
+Como ya sabemos, una **interfaz** es una **especificación/contrato de un conjunto de métodos y properties**. Las clases que cumplan con dicha especificación o contrato se dicen que **implementan** tal interfaz.
+
+ES5 y ES2015 no soportan interfaces, pero sí TypeScript, en consecuencia no existirá nada de esto en el JavaScript resultado de la transpilación.
