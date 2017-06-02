@@ -77,3 +77,46 @@ pageTitle: string;
 showImage: boolean;
 pets: IPet[];
 ```
+
+## Estilos especiales (css) para nuestros componentes.
+
+Cuando construimos el template para nuestro component, muchas veces necesitamos estilos particulares para dicho componente. Por ejemplo, si estamos construyendo una barra de navegación lateral o un listado, seguramente queramos que los elementos ```<li>``` o ```<div>``` tengan un estilo particular. 
+
+En consecuencia, es necesario que evaluemos alguna forma de que nuestros componentes tengan dichos estilos únicos. La opción má
+s rápida puede ser pensar poner los **estilos inline dentro del template HTML** (por ejemplo: ```<div style="display='none'; background-color='red'"> </div>```). Sin embargo, esta opción a nivel de responsabilidades no es prolija, y también hace que a futuro los estilos sean difíciles de mantener, y de obtener reuso entre estilos.
+
+Otra opción es definir los **estilos y referenciarlos como un link dentro del index.html**, por ejemplo usando ```<link rel="stylesheet" href="misEstilosLindos.css">```. Esto es más fácil de mantener, pero hace que el componente solo se vea adecuadamente si dicha stylesheet fue referenciada. Aquí el componente no tiene forma de asegurar que dichos estilos existen. En consecuencia, nuestros componentes no serán tan facilmente reusables, debido a que no son autocontenidos.
+
+Sin embargo, hay una opción más prolija y reusable: **agregar estilos únicos directamente en la metadata del componente utilizando la property styles o styleUrls, siendo esta segunda opción la mejor**. Tanto la property ```styles``` como ```styleUrls``` son arrays, de manera que podemos agregar múltiples estilos o múltiples hojas de estilos, siempre separados por coma.
+
+IMAGEN STYLES 
+
+Siguiendo con nuestro ejemplo, le agregaremos estilos a nuestro ```PetListComponent```. Lo primero que haremos es ver los estilos actuales de nuestra lista:
+
+IMAGEN LISTADO ACTUAL
+
+1) Ahora dentro de la carpeta ```app/pets``` creamos un nuevo archivo ```pet-list.component.css```.
+
+2) Le agregamos el siguiente contenido simple:
+
+```css
+thead {
+    color: #337AB7;
+    font-size: 16px;
+}
+```
+
+3) Editamos la metadata de nuestro PetListComponent para que use dichos estilos:
+
+```typescript
+@Component({
+    selector: 'pm-pets',
+    templateUrl: 'app/pets/pet-list.component.html',
+    styleUrls: ['app/pets/pet-list.component.css'] //agregamos esta property
+})
+export class PetListComponent { ... }
+```
+
+4) Vemos como ahora los cabezales de la tabla estan en azul y en tamaño mayor:
+
+IMAGEN ESTILOS DESPUES
