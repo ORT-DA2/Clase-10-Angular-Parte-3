@@ -328,7 +328,7 @@ export class StarComponent {
         //86 es el width de nuestras estrellitas (ver el template)
         //como estamos implementando el OnChanges, cada vez que el valor de 'rating' cambie
         //esto se va a refrescar
-        this.starWidth = this.rating * 86/6; 
+        this.starWidth = this.rating * 86/5; 
     }
 }
 ```
@@ -400,7 +400,7 @@ Si un Nested Component quiere recibir inputs de su componente contenedor, debe e
 
 ```typescript
 <td> 
-    <da2-star [rating]='pet.rating'></da2-star>
+    <da2-star [rating]='aPet.rating'></da2-star>
 </td>
 ```
 
