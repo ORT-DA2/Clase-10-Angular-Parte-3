@@ -391,3 +391,38 @@ Dentro del body de la tabla, es decir, en el tag ```tbody```, y dentro del ```*n
    <da2-star></da2-star>
 </td>
 ```
+
+### 6) Usando input properties
+
+Vemos que se muestran 5 estrellas y no 4 como habíamos hardcodeado. Ni que tampoco se modifica el valor en el OnChanges (esto es porque el OnChanges se cambia cuando alguna input property de un componente se refresca). Veamos esto:
+
+Si un Nested Component quiere recibir inputs de su componente contenedor, debe exponer properties a partir del decorador ```@Input```. En consecuencia, cada property deberamos decorarla con tal decorador. Luego, el componente contenedor, deberá encargarse  de setearle dicha property al componente anidado a partir de property binding en el template con paréntesis rectos:
+
+```typescript
+<td> 
+    <da2-star [rating]='pet.rating'></da2-star>
+</td>
+```
+
+Para hacer lo de arriba precisamos:
+
+- Ir a ```app/pets/pet.ts``` y agregar la property rating
+- Ir a ```app/pets/pet-list.component.ts``` y agregar un valor de rating en las mascotas que tengamos creadas.
+
+Esto no se describe aquí pero se puede observar en el código fuente.
+
+Lo que haremos es ir al HTML del template y cambiar lo que teníamos antes por lo que acabamos de ver arriba.
+
+### 7) Definimos la Input Property Rating en StarComponent
+
+Para ello precisamos importar Input:
+
+```typescript
+import { Component, OnChanges, Input } from '@angular/core';
+```
+
+Y luego agregar el decorador a la property ```rating```:
+
+```typescript
+@Input() rating: number = 4;
+```
