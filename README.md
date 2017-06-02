@@ -15,7 +15,7 @@ Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks y N
 2) Estilos especiales (css) para nuestros componentes
 3) Ciclo de vida de los componentes: Hooks
 4) Custom Pipes: Filtrado en el listado de mascotas
-5) ----
+5) Componentes anidados o Nested components
 6) ---
 
 ## Mejorando nuestros componentes
@@ -282,7 +282,17 @@ IMAGEN FILTRO 1
 
 IMAGEN FILTRO 2
 
+## Componentes anidados o Nested components
 
+Muchas veces nuestra aplicación va a tener features que son lo suficientemente complejas como para tratarlas de forma aislada, o donde existe una gran posibilidad de generar reuso en diferentes casos de uso, y por ende separarlas en componentes diferentes.
 
+Veremos ahora como hacer componentes anidados o `Nested Componentes` y como generar interacción entre el componente **contenedor** y el componente **anidado**. Estos componentes van a mandar datos de un lado para el otro, usando inputs y mandando outputs al componente contenedor.
 
+Hay dos formas de usar componentes anidados:
 
+1) A traves de su directiva (como ya vimos en el index.html)
+2) A traves de routing, indicandole a un componente que tiene que rutear a otro componente (lo veremos más adelant cuando demos routing). 
+
+Por ahora usaremos la opción 1. El criterio que utilizaremos para indicar si un componente es 'anidable' o no, es simplemente a partir de **evaluar si su template maneja una parte de una view más grande, y obviamente si tiene un selector y una forma de comunicación con su contenedor**.
+
+IMAGEN CONTENEDOR Y NESTED COMPONENT
