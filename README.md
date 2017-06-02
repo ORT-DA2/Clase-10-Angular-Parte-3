@@ -141,6 +141,8 @@ Lo interesante aquí es ver cómo Angular provee un conjunto de *lifecycle hooks
 
 - **OnDestroy**: Para hacer un limpiado de los recursos que usa el componente (un CleanUp) antes de que el componente muera
 
+Para usar un *lifecycle hook*, necesitamos hacer que nuestro componente implemente la interfaz existente para el gancho que se desee usar. w 
+
 La idea es implementar estas interfaces y darle la lógica a cada uno.
 
 Cada hook define un método que es ngNombreHook
