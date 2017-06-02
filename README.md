@@ -141,11 +141,27 @@ Lo interesante aquí es ver cómo Angular provee un conjunto de *lifecycle hooks
 
 - **OnDestroy**: Para hacer un limpiado de los recursos que usa el componente (un CleanUp) antes de que el componente muera
 
-Para usar un *lifecycle hook*, necesitamos hacer que nuestro componente implemente la interfaz existente para el gancho que se desee usar. w 
+Para usar un *lifecycle hook*, necesitamos hacer que nuestro componente implemente la interfaz existente para el gancho que se desee usar. Haremos una implementación de estas interfaces (donde cada interfaz tiene simplemente un método), y le daremos nuestra lógica particular.
 
-La idea es implementar estas interfaces y darle la lógica a cada uno.
+Cada hook/interfaz define un método que es ```ngNombreHook```. Por ejemplo la interfaz ```OnInit``` define el hook ```ngOnInit```.
 
-Cada hook define un método que es ngNombreHook
+Hagamos un ejemplo muy simple implementando justamente ```OnInit```:
 
-ejemplo: ngOnInit
+1) Importemos la interfaz ```OnInit``` desde '@angular/core':
 
+```typescript import { Component, OnInit } from '@angular/core';
+```
+
+2) Nuestra clase de nuestro component ```PetListComponent``` debe ahora implementar ```OnInit```:
+
+```typescript 
+export class PetListComponent implements OnInit {...}
+```
+
+3) Implementamos ```ngOnInit``` en la clase:
+
+```typescript
+ngOnInit(): void {
+    console.log("aca obtengo datos del backend!");
+}
+```
