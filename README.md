@@ -350,3 +350,44 @@ Dentro de ```star.component.html```, pegamos el siguiente código:
     </div>
 </div>
 ```
+
+### 4) Agregamos el StarComponent al AppModule
+
+Dentro de ```app.module.ts```, reemplazamos lo que hay y pegamos el siguiente código:
+
+```typescript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PetFilterPipe } from './pets/pet-filter.pipe'
+
+import { AppComponent }  from './app.component';
+import { PetListComponent }  from './pets/pet-list.component';
+import { StarComponent }  from './shared/star.component'; //importamos el starcomponent
+
+
+@NgModule({
+  imports:      [ BrowserModule, FormsModule ],
+  declarations: [ AppComponent, PetListComponent,StarComponent, PetFilterPipe], //agregamos a las declarations
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+```
+
+### 5) Usamos el StarComponent dentro de PetListComponent
+
+En el template de nuestro componente de listado de mascotas, es decir dentro de ```pet-list.component.html```, agregamos:
+
+Dentro del header de la tabla, es decir, en el tag ```thead```, agregamos esta última celda:
+
+```html
+<th>Rating</th>
+```
+
+Dentro del body de la tabla, es decir, en el tag ```tbody```, y dentro del ```*ngFor***``` sobre las rows, agregamos esta última celda:
+
+```html
+<td> 
+   <da2-star></da2-star>
+</td>
+```
