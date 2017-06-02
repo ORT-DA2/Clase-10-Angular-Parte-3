@@ -48,7 +48,7 @@ showImage: boolean;
 pets: any[]; // Esto no tiene tipo!
 ```
 
-Donde la property ```pets``` es un array de cualquier tipo. Para asegurarnos de que dichos elementos cumplan con una cierta interfaz particular, podemos definir interfaces.
+Donde la property ```pets``` es un array de cualquier tipo. Para asegurarnos de que dichos elementos cumplan con cierta especificación en particular, podemos definir interfaces.
 
 Como ya sabemos, una **interfaz** es una **especificación/contrato de un conjunto de métodos y properties**. Las clases que cumplan con dicha especificación o contrato se dicen que **implementan** tal interfaz.
 
