@@ -384,7 +384,7 @@ Dentro del header de la tabla, es decir, en el tag ```thead```, agregamos esta �
 <th>Rating</th>
 ```
 
-Dentro del body de la tabla, es decir, en el tag ```tbody```, y dentro del ```*ngFor***``` sobre las rows, agregamos esta última celda:
+Dentro del body de la tabla, es decir, en el tag ```tbody```, y dentro del ```*ngFor``` sobre las rows, agregamos esta última celda:
 
 ```html
 <td> 
