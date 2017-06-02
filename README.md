@@ -12,9 +12,9 @@ Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks y N
 
 0) Mejorando nuestros componentes
 1) Interfaces en Angular
-2) Custom Pipes: Filtrado en el listado de mascotas
-3) Lifecycle Hooks
-4) ----
+2) Estilos especiales (css) para nuestros componentes
+3) Custom Pipes: Filtrado en el listado de mascotas
+4) Lifecycle Hooks
 5) ----
 6) ---
 
