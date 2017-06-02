@@ -178,16 +178,27 @@ Como vimos al final de la clase anterior (Clase 9: Angular Parte 2), Angular pro
 El código necesario para crearlos seguramente a esta altura ya nos resulte familiar:
 
 ```typescript
-//1) Nos creamos nuestra propia clase PetFilterPipe
+
+import { Pipe, PipeTransform } from '@angular/core'; //0) importamos
+
+//1) Nos creamos nuestra propia clase PetFilterPipe y la decoramos con @Pipe
+
+@Pipe({
+    name: 'petFilter'
+})
 export class PetFilterPipe implements PipeTransform //2) Implementamos la interfaz PipeTransform
 { 
-    
     transform(value: Array<Pet>, filterBy : string) : Array<Pet> //3) Método de la interfaz a implementar
     {
         //4) Escribimos el código para filtrar las mascotas
         // El primer parametro 'value', es el valor que estamos transformando con el pipe (la lista de mascotas)
         // El segundo parametro 'filterBy', es el criterio a utilizar para transfmar el valor (para filtrar las mascotas)
         // Es decir, lo que ingresó el usuario
+        // El retorno es la lista de mascotas filtrada
     }
 }
 ```
+
+Como podemos ver, tenemos que crear una **clase**, y hacerla que implemente la interfaz **PipeTransform**. Dicha interfaz tiene un método **transform** que es el que será encargado de filtrar las mascotas. A su vez decoramos la clase con un ```@Pipe``` que hace que nuestra clase sea un Pipe. Como notamos, la experiencia a la hora de programar en Angular es bastante consistente, esto es muy similar a cuando creamos componentes.
+
+
