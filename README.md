@@ -149,7 +149,8 @@ Hagamos un ejemplo muy simple implementando justamente ```OnInit```:
 
 1) Importemos la interfaz ```OnInit``` desde '@angular/core':
 
-```typescript import { Component, OnInit } from '@angular/core';
+```typescript 
+import { Component, OnInit } from '@angular/core';
 ```
 
 2) Nuestra clase de nuestro component ```PetListComponent``` debe ahora implementar ```OnInit```:
