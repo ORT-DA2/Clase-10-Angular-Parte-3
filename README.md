@@ -320,7 +320,7 @@ import { Component, OnChanges } from '@angular/core';
     templateUrl: './star.component.html',
     styleUrls: ['./star.component.css']
 })
-export class StarComponent {
+export class StarComponent implements OnChanges {
     rating: number = 4; //hardcodeamos un valor por defecto para ver algo
     starWidth: number;
 
