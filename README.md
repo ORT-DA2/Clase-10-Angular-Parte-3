@@ -111,8 +111,8 @@ thead {
 ```typescript
 @Component({
     selector: 'pm-pets',
-    templateUrl: 'app/pets/pet-list.component.html',
-    styleUrls: ['app/pets/pet-list.component.css'] //agregamos esta property
+    templateUrl: './pet-list.component.html',
+    styleUrls: ['./pet-list.component.css'] //agregamos esta property
 })
 export class PetListComponent { ... }
 ```
