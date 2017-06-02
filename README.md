@@ -296,3 +296,39 @@ Hay dos formas de usar componentes anidados:
 Por ahora usaremos la opción 1. El criterio que utilizaremos para indicar si un componente es 'anidable' o no, es simplemente a partir de **evaluar si su template maneja una parte de una view más grande, y obviamente si tiene un selector y una forma de comunicación con su contenedor**.
 
 IMAGEN CONTENEDOR Y NESTED COMPONENT
+
+Supongamos que nuestras mascotas en LUPI tienen una popularidad asociada. Creemos ahora un nested component que lo que haga es mostrar estrellitas por cada mascota que tengamos. Lo que queremos hacer es que el mostrado de estrellitas sea un componente aparte, que maneje su propia interacción tanto de inputs de sus componentes contenedores, como de outputs hacia otros componentes.
+
+### 1) Creamos los archivos para nuestro StarComponent
+
+En primer lugar, creamos una carpeta ```app/shared``` donde tenemos todos los componentes reusables (como este). Ahí
+creamos los siguientes archivos:
+
+- ```star.component.ts```
+- ```star.component.html```
+- ```star.component.css```
+
+### 2) Creamos el StarComponent 
+
+Dentro de ```star.component.ts```, pegamos el siguiente código:
+
+```typescript
+import { Component, OnChanges } from '@angular/core';
+
+@Component({
+    selector: 'da2-star', //le ponemos un nombre reusable (nuestra compañia)
+    templateUrl: './star.component.html',
+    styleUrls: ['star.component.css']
+})
+export class StarComponent {
+    rating: number = 4; //hardcodeamos un valor por defecto para ver algo
+    starWidth: number;
+
+    ngOnChanges():void {
+        //86 es el width de nuestras estrellitas (ver el template)
+        //como estamos implementando el OnChanges, cada vez que el valor de 'rating' cambie
+        //esto se va a refrescar
+        this.starWidth = this.rating * 86/6; 
+    }
+}
+```
