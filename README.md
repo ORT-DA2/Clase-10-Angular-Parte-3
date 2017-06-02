@@ -424,5 +424,5 @@ import { Component, OnChanges, Input } from '@angular/core';
 Y luego agregar el decorador a la property ```rating```:
 
 ```typescript
-@Input() rating: number = 4;
+@Input() rating: number;
 ```
