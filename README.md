@@ -216,6 +216,70 @@ Si quisieramos pasar más argumentos además del listFilter, los ponemos separad
 
 También nos falta agregar el Pipe a nuestro módulo. Si queremos que el componente pueda usarlo, entonces debemos decirle a nuestro AppModule que registre a dicho Pipe. Siempre que queremos que un Componente use un Pipe, entonces el módulo del componente debe referenciar al Pipe. Lo haremos definiendo al Pipe en el array ```declarations``` del decorador ```ngModule``` de nuestro módulo.
 
+Armemos el Pipe!
+
+### 1) Creamos un archivo para el Pipe
+
+Creamos en la carpeta ```app/pets```, un ```pet-filter-.pipe.ts```, siguiendo nuestras convenciones de nombre.
+
+### 2) Agregamos la lógica del Pipe:
+
+```typescript
+import { Pipe, PipeTransform} from '@angular/core';
+import { Pet } from './pet';
+
+@Pipe({
+    name: 'petFilter'
+})
+export class PetFilterPipe implements PipeTransform {
+
+    transform(value:Array<Pet>, filterBy:string): Array<Pet> 
+    {
+        filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
+        // usamos programacíon funcional (similar a las lambdas expressions en .NET)
+        // esto se llama 'arrow syntax' (por la flechita :P)
+        return filterBy ? value.filter((pet:Pet) =>
+        pet.name.toLocaleLowerCase().indexOf(filterBy) != -1) : value;
+    }
+}
+```
+
+En caso de que no tengan la clase Pet separada, creen un ```pet.ts```, y luego pongan el código de la clase Pet ahí. Ver el código fuente para tener una referencia.
+
+### 3) Agregamos el filtrado en el template
+
+Vamos a pet-list.component.html y donde usamos ```*ngFor```, agregamos el filtrado tal cual lo vimos arriba:
+
+```html
+<tr *ngFor='let aPet of pets' | petFilter : listFilter  >
+```
+
+### 4) Agregamos el Pipe a nuestro AppModule
+
+Vamos a ```app.module.ts``` y agregamos el pipe:
+
+```typescript
+
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { PetFilterPipe } from './pets/pet-filter.pipe'
+
+import { AppComponent }  from './app.component';
+import { PetListComponent }  from './pets/pet-list.component';
+
+@NgModule({
+  imports:      [ BrowserModule, FormsModule ],
+  declarations: [ AppComponent, PetListComponent, PetFilterPipe],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+
+
+```
+
+
+
 
 
 
