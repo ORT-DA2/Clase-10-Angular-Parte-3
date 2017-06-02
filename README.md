@@ -120,3 +120,30 @@ export class PetListComponent { ... }
 4) Vemos como ahora los cabezales de la tabla estan en azul y en tamaño mayor:
 
 IMAGEN ESTILOS DESPUES
+
+## Ciclo de vida de los componentes: Hooks
+
+Todo componente de Angular, tiene un ciclo de vida. Dicho ciclo de vida (lifecycle) es gestionado mismo por Angular:
+
+1) Angular **crea** los componentes.
+2) Luego **renderiza** los componentes.
+3) Una vez esto, Angular **crea y renderiza** los componentes hijos.
+4) Durante la operativa normal, Angular **procesa los cambios** sobre uncomponente cuando sus "properties enlazadas" (data bound properties) cambian
+5) Y finalmente **destruye** el componente antes de destruir el template del DOM.
+
+IMAGEN CICLO DE VIDA COMPONENTES
+
+Lo interesante aquí es ver cómo Angular provee un conjunto de *lifecycle hooks* o simplemente 'ganchos' para que los desarrolladores de componentes podamos hacer algo en cada etapa del ciclo de vida, cuando lo deseemos. Esto nos permite realizar operaciones a demanda. Por ahora veremos solo los tres más comunes:
+
+- **OnInit**: Inicialización del componente. Es un buen lugar para obtener los datos del backend.
+
+- **OnChanges**: Ejecutar acciones después del cambio de input properties. Todavía no hemos visto este tipo de properties pero nos permiten hacer cosas interesantes.
+
+- **OnDestroy**: Para hacer un limpiado de los recursos que usa el componente (un CleanUp) antes de que el componente muera
+
+La idea es implementar estas interfaces y darle la lógica a cada uno.
+
+Cada hook define un método que es ngNombreHook
+
+ejemplo: ngOnInit
+
