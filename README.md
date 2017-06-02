@@ -170,3 +170,24 @@ ngOnInit(): void {
 4) Guardemos los cambios, vayamos al explorador y apretemos ```F12``` (en Windows) o ```Command + Option + I``` (en Mac) para entrar a las developer tools del navegador y ver si efectivamente se loggeó algo en la consola o no:
 
 IMAGEN LOG CONSOLA
+
+## Custom Pipes: Filtrado en el listado de mascotas
+
+Como vimos al final de la clase anterior (Clase 9: Angular Parte 2), Angular provee un conjunto de Pipes que ya vienen integrados y que sirven para transformar los datos de nuestras bound properties antes de mostrarlos en el template (HTML). Ahora veremos como construir nuestros propios, Pipes personalizados, o *Custom Pipes*. 
+
+El código necesario para crearlos seguramente a esta altura ya nos resulte familiar:
+
+```typescript
+//1) Nos creamos nuestra propia clase PetFilterPipe
+export class PetFilterPipe implements PipeTransform //2) Implementamos la interfaz PipeTransform
+{ 
+    
+    transform(value: Array<Pet>, filterBy : string) : Array<Pet> //3) Método de la interfaz a implementar
+    {
+        //4) Escribimos el código para filtrar las mascotas
+        // El primer parametro 'value', es el valor que estamos transformando con el pipe (la lista de mascotas)
+        // El segundo parametro 'filterBy', es el criterio a utilizar para transfmar el valor (para filtrar las mascotas)
+        // Es decir, lo que ingresó el usuario
+    }
+}
+```
