@@ -248,7 +248,7 @@ En caso de que no tengan la clase Pet separada, creen un ```pet.ts```, y luego p
 
 ### 3) Agregamos el filtrado en el template
 
-Vamos a pet-list.component.html y donde usamos ```*ngFor```, agregamos el filtrado tal cual lo vimos arriba:
+Vamos a ```pet-list.component.html``` y donde usamos ```*ngFor```, agregamos el filtrado tal cual lo vimos arriba:
 
 ```html
 <tr *ngFor='let aPet of pets | petFilter : listFilter'>
