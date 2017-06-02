@@ -166,3 +166,7 @@ ngOnInit(): void {
     console.log("aca obtengo datos del backend!");
 }
 ```
+
+4) Guardemos los cambios, vayamos al explorador y apretemos ``F12``` (en Windows) o ```Command + Option + I``` (en Mac) para entrar a las developer tools del navegador y ver si efectivamente se loggeó algo en la consola o no:
+
+IMAGEN LOG CONSOLA
