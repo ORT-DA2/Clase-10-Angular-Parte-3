@@ -251,7 +251,7 @@ En caso de que no tengan la clase Pet separada, creen un ```pet.ts```, y luego p
 Vamos a pet-list.component.html y donde usamos ```*ngFor```, agregamos el filtrado tal cual lo vimos arriba:
 
 ```html
-<tr *ngFor='let aPet of pets' | petFilter : listFilter  >
+<tr *ngFor='let aPet of pets | petFilter : listFilter'>
 ```
 
 ### 4) Agregamos el Pipe a nuestro AppModule
@@ -275,9 +275,12 @@ import { PetListComponent }  from './pets/pet-list.component';
 })
 export class AppModule { }
 
-
 ```
+### 5) Veamos el filtrado!
 
+IMAGEN FILTRO 1
+
+IMAGEN FILTRO 2
 
 
 
