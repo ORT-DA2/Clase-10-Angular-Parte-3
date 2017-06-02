@@ -318,7 +318,7 @@ import { Component, OnChanges } from '@angular/core';
 @Component({
     selector: 'da2-star', //le ponemos un nombre reusable (nuestra compañia)
     templateUrl: './star.component.html',
-    styleUrls: ['star.component.css']
+    styleUrls: ['./star.component.css']
 })
 export class StarComponent {
     rating: number = 4; //hardcodeamos un valor por defecto para ver algo
@@ -331,4 +331,22 @@ export class StarComponent {
         this.starWidth = this.rating * 86/6; 
     }
 }
+```
+
+### 3) Creamos el Template para nuestro StarComponent
+
+Dentro de ```star.component.html```, pegamos el siguiente código:
+
+```html
+<div clas="crop"
+    [style.width.px]="starWidht"
+    [title]="rating">
+    <div style="width:86px">
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+    </div>
+</div>
 ```
