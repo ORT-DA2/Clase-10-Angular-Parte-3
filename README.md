@@ -90,11 +90,11 @@ Otra opción es definir los **estilos y referenciarlos como un link dentro del i
 
 Sin embargo, hay una opción más prolija y reusable: **agregar estilos únicos directamente en la metadata del componente utilizando la property styles o styleUrls, siendo esta segunda opción la mejor**. Tanto la property ```styles``` como ```styleUrls``` son arrays, de manera que podemos agregar múltiples estilos o múltiples hojas de estilos, siempre separados por coma.
 
-IMAGEN STYLES 
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/1.png)
 
 Siguiendo con nuestro ejemplo, le agregaremos estilos a nuestro ```PetListComponent```. Lo primero que haremos es ver los estilos actuales de nuestra lista:
 
-IMAGEN LISTADO ACTUAL
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/2.png)
 
 1) Ahora dentro de la carpeta ```app/pets``` creamos un nuevo archivo ```pet-list.component.css```.
 
@@ -120,7 +120,7 @@ export class PetListComponent { ... }
 
 4) Vemos como ahora los cabezales de la tabla estan en azul y en tamaño mayor:
 
-IMAGEN ESTILOS DESPUES
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/3.png)
 
 ## Ciclo de vida de los componentes: Hooks
 
@@ -132,7 +132,7 @@ Todo componente de Angular, tiene un ciclo de vida. Dicho ciclo de vida (lifecyc
 4) Durante la operativa normal, Angular **procesa los cambios** sobre uncomponente cuando sus "properties enlazadas" (data bound properties) cambian
 5) Y finalmente **destruye** el componente antes de destruir el template del DOM.
 
-IMAGEN CICLO DE VIDA COMPONENTES
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/4.png)
 
 Lo interesante aquí es ver cómo Angular provee un conjunto de *lifecycle hooks* o simplemente 'ganchos' para que los desarrolladores de componentes podamos hacer algo en cada etapa del ciclo de vida, cuando lo deseemos. Esto nos permite realizar operaciones a demanda. Por ahora veremos solo los tres más comunes:
 
@@ -170,7 +170,7 @@ ngOnInit(): void {
 
 4) Guardemos los cambios, vayamos al explorador y apretemos ```F12``` (en Windows) o ```Command + Option + I``` (en Mac) para entrar a las developer tools del navegador y ver si efectivamente se loggeó algo en la consola o no:
 
-IMAGEN LOG CONSOLA
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/5.png)
 
 ## Custom Pipes: Filtrado en el listado de mascotas
 
@@ -279,9 +279,9 @@ export class AppModule { }
 ```
 ### 5) Veamos el filtrado!
 
-IMAGEN FILTRO 1
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/6.png)
 
-IMAGEN FILTRO 2
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/7.png)
 
 ## Componentes anidados o Nested components
 
@@ -296,7 +296,7 @@ Hay dos formas de usar componentes anidados:
 
 Por ahora usaremos la opción 1. El criterio que utilizaremos para indicar si un componente es 'anidable' o no, es simplemente a partir de **evaluar si su template maneja una parte de una view más grande, y obviamente si tiene un selector y una forma de comunicación con su contenedor**.
 
-IMAGEN CONTENEDOR Y NESTED COMPONENT
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/9.png)
 
 Supongamos que nuestras mascotas en LUPI tienen una popularidad asociada. Creemos ahora un nested component que lo que haga es mostrar estrellitas por cada mascota que tengamos. Lo que queremos hacer es que el mostrado de estrellitas sea un componente aparte, que maneje su propia interacción tanto de inputs de sus componentes contenedores, como de outputs hacia otros componentes.
 
@@ -442,7 +442,7 @@ Y luego agregar el decorador a la property ```rating```:
 
 Veamos como resulta el listado (agregué algunas mascotas de más para tener referencia):
 
-IMAGEN LISTADO MASCOTA CON ESTRELLITAS
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/10.png)
 
 ### 8) Levantando eventos desde un componente anidado
 
@@ -512,6 +512,9 @@ onRatingClicked(message:string):void {
     this.pageTitle = 'Pet List: ' + message;
 }
 ```
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/11.png)
+
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/12.png)
 
 ## Servicios e Inyección de Dependencias
 
@@ -525,7 +528,7 @@ Angular trae un ```Injector``` *built-in*, que nos permitirá registrar nuestros
 
 Supongamos tenemos 3 servicios: svc, log y math. Una vez un componente utilice uno de dichos servicios en su constructor, el Angular Injector le provee la instancia del mismo al componente.
 
-IMAGEN INY DEPENDENCIAS
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/13.png)
 
 ### Construyamos un servicio
 
@@ -833,6 +836,8 @@ Cada vez que una ruta es activada (gracias a routerLink) , el componente asociad
 
 Así nos queda:
 
-IMAGEN ROUTING 1
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/14.png)
 
-IMAGEN ROUTING 2
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/15.png)
+
+![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/16.png)
