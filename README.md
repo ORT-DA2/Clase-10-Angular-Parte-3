@@ -438,3 +438,8 @@ Y luego agregar el decorador a la property ```rating```:
 ```typescript
 @Input() rating: number;
 ```
+
+Veamos como resulta el listado (agregué algunas mascotas de más para tener referencia):
+
+IMAGEN LISTADO MASCOTA CON ESTRELLITAS
+
