@@ -443,3 +443,61 @@ Veamos como resulta el listado (agregué algunas mascotas de más para tener ref
 
 IMAGEN LISTADO MASCOTA CON ESTRELLITAS
 
+### 8) Levantando eventos desde un componente anidado
+
+Si queremos que nuestro StarComponent se comunique con su contenedor PetListComponent, debemos usar eventos. Para ello tenemos que usar, para definirlos, el decorator ```@Output```, el cual debemos aplicar sobre la property del componente anidado que queremos usar (es importante notar que el tipo de dicha property debe ser un ```EventEmitter```, la única forma de pasar datos a su contenedor). A su vez, dicha clase se basa en generics para especificar el tipo de datos de lo que queremos pasar al componente contenedor.
+
+La forma que usaremos para activar el evento, es a partir del método click sobre las estrellas; una vez que se haga el click, se activará la lógica que definamos del evento.
+
+La sintaxis para activar al evento desde nuestros componentes anidados es:
+
+onClick() {
+    this.nombreDelEvento.emit('parametro a pasar al contenedor');
+}
+
+Siendo ```emit``` lo que usamos para levantar el evento al contenedor.
+
+Vayamos al código:
+
+Lo primero que hacemos es importar ```EventEmitter``` y ```Output``` en nuestro ```StarComponent```:
+
+```typescript
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+```
+
+Luego definimos la property del evento en nuestra clase del StarComponent:
+
+```typescript
+@Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
+```
+
+Luego hacemos el binding del evento en el template del evento:
+
+```html
+<div class="crop" 
+    [style.width.px]="starWidth"
+    title={{starWidth}}
+    (click)='onClick()'>
+    <div style="width: 86px">
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+    </div>
+</div>
+```
+
+Y ahora volvemos al StarComponent y agregamos la funcion onClick que acabamos de declarar en nuestro template:
+
+```typescript
+onClick(): void {
+    this.ratingClicked.emit(`El puntaje ${this.rating}fue clickeado!`);
+}
+```
+
+
+
+
+
+
