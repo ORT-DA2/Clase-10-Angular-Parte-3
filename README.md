@@ -1,6 +1,6 @@
-# Angular: Interfaces, Custom Pipes, Lifecycle Hooks, etc.
+# Angular: Conceptos avanzados
 
-Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks y Nested Components
+Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks, Nested Components y Servicios.
 
 ## Para correr el proyecto:
 
@@ -520,10 +520,78 @@ Para lograr eso, construiremos **servicios**. Y a su vez, usaremos **inyección 
 
 Definiendo servicios, son simplemente clases con un fin en particular. Los usamos para aquellas features que son independientes de un componente en concreto, para reusar lógica o datos a través de componentes o para encapsular interacciones externas. Al cambiar esta responsabilidades y llevarlas a los servicios, nuestro código es más fácil de testear, debuggear y mantener.
 
+Angular trae un ```Injector``` *built-in*, que nos permitirá registrar nuestros servicios en nuestros componentes, y que estos sean Singleton. Este Injector funciona en base a un contenedor de inyección de dependencias, donde una vez estos se registran, se mantiene una única instancia de cada uno.
 
+Supongamos tenemos 3 servicios: svc, log y math. Una vez un componente utilice uno de dichos servicios en su constructor, el Angular Injector le provee la instancia del mismo al componente.
 
+IMAGEN INY DEPENDENCIAS
 
+### Construyamos un servicio
 
+Para armar nuestro servicio precisamos:
 
+- Crear la clase del servicio.
+- Definir la metadata con un @, es decir un decorador.
+- Importar lo que precisamos.
 
+¿Familiar? Son los mismos pasos que hemos seguido para construir nuestros componentes y nuestros custom pipes :)
 
+### 1) Creamos nuestro servicio
+
+Vamos a ```app/pets``` y creamos un nuevo archivo: ```pet.service.ts```. 
+
+Luego, le pegamos el siguiente código:
+
+```typescript
+
+import { Injectable } from '@angular/core';
+import { Pet } from './pet';
+@Injectable()
+export class PetService {
+    
+    // esto luego va a ser una llamada a nuestra api REST
+    getPets(): Array<Pet> {
+        return [
+            new Pet("1","Bobby",4,"Grande", new Date(),20,"Golden Retriever", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Golden_Retriever_with_tennis_ball.jpg/1200px-Golden_Retriever_with_tennis_ball.jpg", 3),
+            new Pet("2","Diana",4,"Mediana", new Date(),10,"Perro", "https://scontent.fmvd2-1.fna.fbcdn.net/v/t1.0-9/11056439_10152650173091621_5526444138839272280_n.jpg?oh=4f2cf438d3ecd07824ccb23fe148ad05&oe=59E7EAB0", 4),
+            new Pet("3","Lupita",4,"Chica", new Date(),2.5,"Perro", "https://scontent.fmvd2-1.fna.fbcdn.net/v/t31.0-8/14991469_742030209278747_4126962164878937004_o.jpg?oh=1101068589fc36de2f6d25f9b858c4cf&oe=59DC5DDD", 5),
+        ];
+    }
+
+}
+```
+
+### 2) Registramos nuestro servicio a través de un provider
+
+Para registrar nuestro servicio en nuestro componente, debemos registrar un Provider. Un provider es simplemente código que puede crear o retornar un servicio, **típicamente es la clase del servicio mismo**. Esto lo lograremos a través de definirlo en el componente, o como metadata en el Angular Module (AppModule).
+
+- Si lo registramos en un componente, podemos inyectar el servicio en el componente y en todos sus hijos. 
+- Si lo registramos en el módulo de la aplicación, lo podemos inyectar en toda la aplicación.
+
+En este caso, lo registraremos en el Root Component (```AppComponent```). Por ello, vamos a ```app.component.ts``` y reemplazamos todo el código para dejarlo así:
+
+```typescript
+import { Component } from '@angular/core';
+import  { PetService } from './pets/pet.service'; //importamos el servicio
+
+@Component({
+  selector: 'my-app',
+  template: `
+    <h1>Curso de DA2 de {{name}}</h1>
+    <p> <strong>Email:</strong> {{email}} </p>
+    <p> <strong>Dirección:</strong> {{address.street}} {{address.number}} de la ciudad - {{address.city}} </p>
+    <pm-pets></pm-pets>
+  `,
+  providers: [PetService] //registramos el provider en la metadata del AppComponent
+})
+export class AppComponent  
+{
+   name = 'Gabriel Piffaretti'; 
+   email = "piffarettig@gmail.com";
+   address = {
+     street: "la dirección del profe",
+     city: "Montevideo",
+     number: "1234"
+   }
+}
+```
