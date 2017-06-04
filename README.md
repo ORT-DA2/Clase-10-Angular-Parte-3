@@ -1,6 +1,6 @@
 # Angular: Conceptos avanzados
 
-Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks, Nested Components y Servicios.
+Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks, Nested Components, Routing y Servicios.
 
 ## Para correr el proyecto:
 
