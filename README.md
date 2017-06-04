@@ -693,7 +693,7 @@ Cuando el usuario cliquee en dicho link, la ubicación del browser cambiará a: 
 
 Cuando dicha ubicación cambia, el Angular Router buscará una definición de ruta que se matchee con dicha nueva ruta. Dicha definición de ruta incluirá el componente a cargar cuando tal ruta sea activada:
 
-```json
+```
 { path: 'pets', component: PetListComponent }
 ```
 
