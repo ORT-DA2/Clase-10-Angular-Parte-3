@@ -16,7 +16,7 @@ Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks y N
 3) Ciclo de vida de los componentes: Hooks
 4) Custom Pipes: Filtrado en el listado de mascotas
 5) Componentes anidados o Nested components
-6) ---
+6) Servicios e Inyección de dependencias
 
 ## Mejorando nuestros componentes
 
@@ -511,3 +511,19 @@ onRatingClicked(message:string):void {
     this.pageTitle = 'Pet List: ' + message;
 }
 ```
+
+## Servicios e Inyección de Dependencias
+
+Los componentes nos permiten definir lógica y HTML para una cierta pantalla/vista en particular. Sin embargo, ¿qué hacemos con aquella lógica que no está asociada a una vista en concreto?, o ¿qué hacemos si queremos reusar lógica común a varios componentes (por ejemplo la lógica de conexión contra una API, lógica de manejo de la sesión/autenticación)?
+
+Para lograr eso, construiremos **servicios**. Y a su vez, usaremos **inyección de dependencias** para poder meter/inyectar esos servicios en dichos componentes. 
+
+Definiendo servicios, son simplemente clases con un fin en particular. Los usamos para aquellas features que son independientes de un componente en concreto, para reusar lógica o datos a través de componentes o para encapsular interacciones externas. Al cambiar esta responsabilidades y llevarlas a los servicios, nuestro código es más fácil de testear, debuggear y mantener.
+
+
+
+
+
+
+
+
