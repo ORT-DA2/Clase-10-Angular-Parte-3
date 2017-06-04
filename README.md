@@ -836,8 +836,6 @@ Cada vez que una ruta es activada (gracias a routerLink) , el componente asociad
 
 Así nos queda:
 
-![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/14.png)
-
 ![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/15.png)
 
 ![image](https://github.com/piffarettig/Clase-10-Angular-Parte-3/blob/master/doc-img/16.png)
