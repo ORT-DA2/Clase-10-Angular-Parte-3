@@ -496,8 +496,18 @@ onClick(): void {
 }
 ```
 
+Finalmente, lo que haremos es agregar es la referencia al evento en el template:
 
+```html
+ <da2-star [rating]='aPet.rating'
+    (ratingClicked)='onRatingClicked($event)'>
+</da2-star>
+```
 
+Y dentro del código del PetListComponent definimos el callback que queremos que se ejecute cuando se haga click en nuestras estrellas:
 
-
-
+```typescript
+onRatingClicked(message:string):void {
+    this.pageTitle = 'Pet List: ' + message;
+}
+```
