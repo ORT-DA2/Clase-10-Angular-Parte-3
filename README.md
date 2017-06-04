@@ -764,7 +764,69 @@ import { WelcomeComponent } from './home/welcome.component';
 
 Y luego en el array de declarations agregamos ```WelcomeComponent```.
 
+### 1) Agregamos al módulo Angular Router en nuestro AppModule
 
+Toda aplicación en Angular tiene un Router, que es manejado por Angular. Para ello debemos importarlo desde  ```'@angular/router'```. Esto también nos traerá las directivas ```router-link``` y ```router-outlet``` que mencionamos anteriormente.
 
+A su vez, este módulo expone las rutas al resto de la aplicación. Lo que haremos es, en el AppModule (```app.module.ts```), agregamos el siguiente import:
 
+```typescript
+import { RouterModule } from '@angular/router';
+```
 
+Y en el array de imports del modulo:
+
+```typescript
+@NgModule({
+  imports:      
+  [ 
+    BrowserModule, 
+    FormsModule, 
+    RouterModule.forRoot([
+      { path: 'pets', component: PetListComponent},
+      { path: 'pets/:id', component: PetListComponent }, // esto sería otro componente! por ejemplo uno que muestre el detalle de las mascotas
+      { path: 'welcome', component:  WelcomeComponent}, 
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // configuramos la URL por defecto
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full'} //cualquier otra ruta que no matchee, va a ir al WelcomeComponent, aca podría ir una pagina de error tipo 404 Not Found
+      ])
+   ],
+  declarations: [ AppComponent, WelcomeComponent, PetListComponent,StarComponent, PetFilterPipe],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+
+```
+### 2) Agregamos el RouterOutlet para nuestro WelcomeComponent en AppComponent y los RouterLinks:
+
+Reemplazaremos todo el código en AppComponent (```app.component.ts```) por lo siguiente:
+
+```typescript
+
+import { Component } from '@angular/core';
+import  { PetService } from './pets/pet.service';
+
+@Component({
+  selector: 'my-app',
+  template: `
+     <div>
+        <nav class='navbar navbar-default'>
+            <div class='container-fluid'>
+                <a class='navbar-brand'>{{pageTitle}}</a>
+                <ul class='nav navbar-nav'>
+                    <li><a [routerLink]="['/welcome']">Home</a></li>
+                    <li><a [routerLink]="['/pets']">Pet List</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class='container'>
+            <router-outlet></router-outlet>
+        </div>
+     </div>
+  `,
+  providers: [PetService]
+})
+export class AppComponent  {}
+
+```
+
+Cada vez que una ruta es activada (gracias a routerLink) , el componente asociado será mostrado en la ubicación especificada, es decir en el ```<router-outlet>```.
