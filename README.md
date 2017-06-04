@@ -246,7 +246,7 @@ export class PetFilterPipe implements PipeTransform {
 
 En caso de que no tengan la clase Pet separada, creen un ```pet.ts```, y luego pongan el código de la clase Pet ahí. Ver el código fuente para tener una referencia.
 
-### 3) Agregamos el filtrado en el template
+### 3) Agregamos el filtrado en el template y sus estilos
 
 Vamos a ```pet-list.component.html``` y donde usamos ```*ngFor```, agregamos el filtrado tal cual lo vimos arriba:
 
@@ -333,7 +333,7 @@ export class StarComponent implements OnChanges {
 }
 ```
 
-### 3) Creamos el Template para nuestro StarComponent
+### 3) Creamos el Template para nuestro StarComponent y sus estilos
 
 Dentro de ```star.component.html```, pegamos el siguiente código:
 
@@ -349,6 +349,18 @@ Dentro de ```star.component.html```, pegamos el siguiente código:
         <span class="glyphicon glyphicon-star"></span>
     </div>
 </div>
+```
+
+A su vez, vamos a ```star.component.css```, y pegamos el siguiente código:
+
+```css
+.crop {
+    overflow: hidden;
+}
+
+div {
+    cursor: pointer;
+}
 ```
 
 ### 4) Agregamos el StarComponent al AppModule
