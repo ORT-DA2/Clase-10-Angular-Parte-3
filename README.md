@@ -830,3 +830,9 @@ export class AppComponent  {}
 ```
 
 Cada vez que una ruta es activada (gracias a routerLink) , el componente asociado será mostrado en la ubicación especificada, es decir en el ```<router-outlet>```.
+
+Así nos queda:
+
+IMAGEN ROUTING 1
+
+IMAGEN ROUTING 2
