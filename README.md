@@ -723,7 +723,7 @@ Para ello hacemos:
     </div>
     <div class="panel-body"  >
         <div class="row" >
-            <img src="./app/assets/images/logo.jpg" 
+            <img src="http://trecool.es/wp-content/uploads/2013/06/Whistle-dog-app-01.jpg" 
                  class="img-responsive center-block"
                  style="max-height:300px;padding-bottom:50px"/>
         </div>
