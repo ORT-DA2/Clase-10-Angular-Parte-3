@@ -17,6 +17,7 @@ Seguimos con conceptos de Angular: Interfaces, Custom Pipes, Lifecycle Hooks, Ne
 4) Custom Pipes: Filtrado en el listado de mascotas
 5) Componentes anidados o Nested components
 6) Servicios e Inyección de dependencias
+7) Routing/Navegación entre componentes (pantallas)
 
 ## Mejorando nuestros componentes
 
@@ -668,5 +669,102 @@ export class PetListComponent implements OnInit {
         this.pageTitle = 'Pet List: ' + message;
     }
 }
+```
+
+## Routing/Navegación entre componentes (pantallas)
+
+Veremos ahora cómo podremos lograr tener diferentes pantallas (en la actualidad tenemos una sola, el listado de mascotas), y lograr navegar entre ellas. Para ello, vamos a hacer un simple componente de pantalla inicial (```WelcomeComponent```).
+
+Pero primero, veremos como configurar el routing en nuestra app.
+
+Como sabemos, nuestra app en Angular es una SPA, lo que nos permitirá tener decenas o cientas de páginas manejando un solo html (```index.html```); las diferentes vistas se "van turnando" entre sí para mostrarse en los momentos adecuados. ¿Cómo manejamos eso? Ahí es donde aparece el Routing.
+
+La idea es que configuremos la **ruta** o *route* para que dicha vista aparezca. Como parte del diseño de nuestra app, vamos a estar usando botones, toolbars, links, imagenes, o lo que sea que queramos usar para dispara acciones y cambiar de página. Estas acciones, tendrán una ruta asociada, permitiendo que cuando dicha acción se dispare, el componente de la acción asociada se muestre.
+
+Por ejemplo: el usuario selecciona el menú para ver el listado de mascotas, el componente de listado de mascotas se activa y muestra su vista. 
+
+En nuestro menú principal, tenemos una serie de opciones donde cada una de ellas tendrá atada una ruta sobre la cual queremos rutear.
+
+```html 
+<a routerLink="/pets"> Listado de mascotas </a>
+```
+
+Cuando el usuario cliquee en dicho link, la ubicación del browser cambiará a: ```localhost:3000/pets```.
+
+Cuando dicha ubicación cambia, el Angular Router buscará una definición de ruta que se matchee con dicha nueva ruta. Dicha definición de ruta incluirá el componente a cargar cuando tal ruta sea activada:
+
+```json
+{ path: 'pets', component: PetListComponent }
+```
+
+Esto lo que hará es mostrar el componente, en la ubicación que se haya especificado con la directiva:
+
+```html
+<router-outlet></router-outlet>
+```
+
+Viendo visto el proceso, procedemos a hacer el routing:
+
+### 0) Creando el Welcome Component
+
+Como para ver el routing precisamos al menos otro componente, haremos el ```WelcomeComponent``` (menú inicial).
+
+Para ello hacemos:
+
+- Creamos la carpeta ```home``` en ```app```.
+- Dentro de ```app/home``` (la carpeta que acabamos de crear), creamos los archivos ```welcome.component.ts``` y ```welcome.component.html```
+- Agregamos el código para cada uno:
+
+```Para el HTML:
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body"  >
+        <div class="row" >
+            <img src="./app/assets/images/logo.jpg" 
+                 class="img-responsive center-block"
+                 style="max-height:300px;padding-bottom:50px"/>
+        </div>
+        <div class="row"  >
+            <div class="text-center">Ejemplo hecho por:</div>
+            <h3 class="text-center">Gabriel Piffaretti</h3>
+
+            <div class="text-center">@gabrielpiffa</div>
+            <div class="text-center">
+                <a href="http://www.ort.edu.uy">www.ort.edu.uy</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 ```
+
+Para la clase:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+    templateUrl: './welcome.component.html'
+})
+export class WelcomeComponent {
+    public pageTitle: string = 'Welcome';
+}
+```
+
+Finalmente, declaramos el componente en el ```AppModule```:
+
+Agregamos:
+
+```typescript
+import { WelcomeComponent } from './home/welcome.component';
+```
+
+Y luego en el array de declarations agregamos ```WelcomeComponent```.
+
+
+
+
+
